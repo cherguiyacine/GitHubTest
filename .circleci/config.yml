@@ -5,16 +5,6 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  print_hello: 
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run:
-          name: "Say Salut name"
-          command: "echo Salut"
-      - run:
-          name: "wish branch"
-          command: echo ${CIRCLE_BRANCH}
   say_my_name:
     docker:
       - image: cimg/base:stable
@@ -22,7 +12,13 @@ jobs:
       - run:
          name: "Say my name !"
          command: "echo ${MY_NAME_VAR}"
-  print_world: 
+      - run:
+         name : "Create a file"
+         command : echo "text to output here" > output.txt 
+      - run:
+         name : "Create a file 2"
+         command : pwd
+  print_output_file: 
     docker:
       - image: cimg/base:stable
     steps:
@@ -34,8 +30,7 @@ jobs:
 workflows:
   welcome_tuto:
     jobs:
-      - print_hello
       - say_my_name
-      - print_world :
-         requires: [print_hello]
+      - print_output_file :
+         requires: [say_my_name]
 
