@@ -21,7 +21,7 @@ jobs:
     steps:
       - run:
          name: "Say my name !"
-         command: "echo ${MY_NAME_VARIABLE}"
+         command: "echo ${MY_NAME_VAR}"
   print_world: 
     docker:
       - image: cimg/base:stable
