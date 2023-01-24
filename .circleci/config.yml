@@ -15,14 +15,6 @@ jobs:
       - run:
           name: "wish branch"
           command: echo ${CIRCLE_BRANCH}
-
-  print_world: 
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run:
-          name: "Say le monde name"
-          command: "echo le monde!"
   say_my_name:
     docker:
       - image: cimg/base:stable
@@ -30,13 +22,20 @@ jobs:
       - run:
          name: "Say my name !"
          command: "echo ${MY_NAME_VAR}"
+  print_world: 
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: "Say le monde name"
+          command: "echo le monde!"
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   welcome_tuto:
     jobs:
       - print_hello
+      - say_my_name
       - print_world :
          requires: [print_hello]
-      - say_my_name
 
