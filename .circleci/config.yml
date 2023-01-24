@@ -22,9 +22,6 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run:
-          name: "Say Salut name"
-          command: "echo Salut"
-      - run:
           name: "wish branch"
           command: echo ${CIRCLE_BRANCH}
 
