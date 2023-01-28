@@ -90,4 +90,4 @@ jobs:
 workflows:
   new_work:
     jobs:
-      - clean_up_old_front_end
+      - promote_to_production
