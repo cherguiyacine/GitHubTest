@@ -74,4 +74,4 @@ jobs:
 workflows:
   new_work:
     jobs:
-      - promote_to_production
+      - get_last_deployment_id
